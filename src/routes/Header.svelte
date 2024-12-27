@@ -24,7 +24,7 @@
 		<!-- svelte-ignore a11y_consider_explicit_label -->
 		<a
 			class="ml-0.5 inline-flex text-indigo-400 hover:text-indigo-500"
-			href="#0"
+			href="/"
 		>
 			<picture>
 				<source srcset={yeralti} type="image/webp" />
@@ -46,7 +46,7 @@
 	<div class="flex flex-1 items-center justify-end">
 		<a
 			class="inline-flex justify-center whitespace-nowrap rounded-full bg-indigo-500 px-3 py-1.5 text-sm font-medium text-white shadow transition-colors hover:bg-indigo-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300"
-			href="#0"
+			href="/"
 		>
 			Kaydol
 		</a>
