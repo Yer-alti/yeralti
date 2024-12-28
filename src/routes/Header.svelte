@@ -1,14 +1,59 @@
 <script lang="ts">
 	import { page } from "$app/state";
+	import CrSharpButton from "$lib/components/CrSharpButton.svelte";
+	import { onMount } from "svelte";
 	import yeralti from "../lib/images/yeralti.png";
+	import { Motion } from "svelte-motion";
+
+	const navItems = [
+		{ name: "Ana Sayfa", url: "/" },
+		{ name: "Hakkımızda", url: "/about" },
+		{ name: "Başvur", url: "/apply" },
+	];
+
+	let selected = $state(page.url.pathname);
+	let blob = $state.raw({ x: 0, y: 0, width: 0, height: 0 });
+	let boundary: HTMLElement;
+
+	function moveBlob(
+		event: any & { currentTarget: EventTarget & HTMLAnchorElement },
+		url: string,
+	) {
+		selected = url;
+
+		const rect = event.target.getBoundingClientRect();
+		blob = {
+			x: rect.left - boundary.getBoundingClientRect().left,
+			y: rect.top - boundary.getBoundingClientRect().top,
+			width: rect.width,
+			height: rect.height,
+		};
+	}
+
+	onMount(() => {
+		onEvent();
+	});
+
+	function onEvent() {
+		moveBlob(
+			{ target: document.querySelector("a[href='" + selected + "']") },
+			selected,
+		);
+	}
 </script>
 
+<svelte:window onresize={onEvent} />
+
 {#snippet NavLink(name: string, url: string)}
-	<li aria-current={page.url.pathname == url ? "page" : undefined}>
+	<li
+		aria-current={page.url.pathname == url ? "page" : undefined}
+		class="relative"
+	>
 		<a
 			href={url}
-			class="inline-flex rounded-full px-3 py-1.5 text-slate-500
-	   hover:text-indigo-500 [&.active]:bg-indigo-100 [&.active]:text-indigo-600"
+			onclick={(event) => moveBlob(event, url)}
+			class="inline-flex rounded-full px-4 py-2.5 transition-colors duration-200
+	   hover:text-soft"
 		>
 			{name}
 		</a>
@@ -16,39 +61,34 @@
 {/snippet}
 
 <header
-	class="flex h-14 mx-auto w-full max-w-7xl items-center justify-between gap-4 rounded-full border border-gray-100 bg-white px-4
-	 shadow-xl mt-8 sticky top-4
-	 shadow-black/[0.04]"
+	bind:this={boundary}
+	class="flex h-20 mx-auto w-full max-w-7xl items-center justify-between border-b-2 border-gray-100 px-8
+	  mt-8 sticky top-0 backdrop-blur-md z-50"
 >
-	<div class="flex flex-1 items-center">
-		<!-- svelte-ignore a11y_consider_explicit_label -->
-		<a
-			class="ml-0.5 inline-flex text-indigo-400 hover:text-indigo-500"
-			href="/"
-		>
-			<picture>
-				<source srcset={yeralti} type="image/webp" />
-				<img src={yeralti} alt="Yeralti" class="h-4 w-auto" />
-			</picture>
-		</a>
-	</div>
+	<picture class="flex flex-1 items-center">
+		<source srcset={yeralti} type="image/webp" />
+		<img src={yeralti} alt="Yeralti" class="h-4 w-auto" />
+	</picture>
 	<nav class="flex justify-center">
 		<ul
-			class="flex flex-wrap items-center gap-3 text-sm font-medium md:gap-8
-			[&>li[aria-current='page']]:bg-indigo-100 [&>li[aria-current='page']]:text-indigo-600
-			"
+			class="flex flex-wrap items-center gap-3 text-sm font-medium md:gap-8"
 		>
-			{@render NavLink("Ana Sayfa", "/")}
-			{@render NavLink("Başvur", "/apply")}
-			{@render NavLink("Hakkımızda", "/about")}
+			{#each navItems as { name, url }, i}
+				{@render NavLink(name, url)}
+			{/each}
 		</ul>
-	</nav>
-	<div class="flex flex-1 items-center justify-end">
-		<a
-			class="inline-flex justify-center whitespace-nowrap rounded-full bg-indigo-500 px-3 py-1.5 text-sm font-medium text-white shadow transition-colors hover:bg-indigo-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300"
-			href="/"
+		<Motion
+			let:motion
+			transition={{ type: "spring", duration: 0.5 }}
+			animate={blob}
 		>
-			Kaydol
-		</a>
+			<div
+				use:motion
+				class={`absolute bg-primary -z-10 rounded-full left-0 inset-y-0`}
+			></div>
+		</Motion>
+	</nav>
+	<div class="flex flex-1 justify-end">
+		<CrSharpButton noBorder>Kaydol</CrSharpButton>
 	</div>
 </header>
