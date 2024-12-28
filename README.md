@@ -1,6 +1,8 @@
 # Yeraltı - SvelteKit
 
-<img width="1440" alt="Screenshot 2024-12-27 at 20 49 23" src="https://github.com/user-attachments/assets/0dcc35fa-b667-4597-b4e5-3096b02937a6" />
+<img width="1439" alt="Screenshot 2024-12-28 at 21 36 13" src="https://github.com/user-attachments/assets/7f60d13d-2292-4df7-bd94-0204fcd6f7f7" />
+<img width="503.7" alt="Screenshot 2024-12-27 at 20 49 23" src="https://github.com/user-attachments/assets/0dcc35fa-b667-4597-b4e5-3096b02937a6" />
+<img width="503.7" alt="Screenshot 2024-12-28 at 21 39 23" src="https://github.com/user-attachments/assets/2f6c46ef-4815-47c7-85e3-b4b623673b34" />
 
 Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
 
