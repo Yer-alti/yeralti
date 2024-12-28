@@ -1,5 +1,7 @@
 # Yeraltı - SvelteKit
 
+<img width="1440" alt="Screenshot 2024-12-27 at 20 49 23" src="https://github.com/user-attachments/assets/0dcc35fa-b667-4597-b4e5-3096b02937a6" />
+
 Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
 
 ## Creating a project
