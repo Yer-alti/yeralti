@@ -2,33 +2,31 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap');
 
 :root {
 
 	--font-body: "Fraunces", serif;
-  --font-mono: "Fira Mono", monospace;
+	--font-mono: "Fira Mono", monospace;
 
 
-	--primary: #db9e81;
-	--primary-soft: #edd4c8;
+	--primary: #fdb833;
+	--primary-soft: #fdc43f;
+	--secondary: #ffda3d;
+	--secondary-soft: #ffe94e;
+	--pop: #fff75e;
 
-	--bg: #f3f3f3;
+	--bg: #FAF8DB;
 
-	--color-text: #191919;
-	--color-text-soft: #6b7280;
+	--color-text: #291b00d2;
+	--inverted: #140E00;
 
 	font-family: var(--font-body);
 	color: var(--color-text);
-}
 
-body {
-	margin: 0;
-	background-image: radial-gradient(50% 50% at 50% 50%,
-			rgba(255, 255, 255, 0.75) 0%,
-			rgba(255, 255, 255, 0.5) 100%),
-		linear-gradient(180deg, var(--bg) 0%, var(--bg) 15%, var(--bg) 50%);
-}
+	scroll-behavior: smooth;
 
+}
 
 a {
 	text-decoration: none;

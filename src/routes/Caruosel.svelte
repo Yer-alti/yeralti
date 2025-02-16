@@ -5,29 +5,28 @@
 	import dergi from "../lib/images/dergi.png";
 	import erlik from "../lib/images/erlik.png";
 	import events from "../lib/images/events.png";
-	import monthly from "../lib/images/monthly.png";
-	import { Armchair } from "lucide-svelte";
+	import {
+		Armchair,
+		CalendarHeart,
+		GraduationCap,
+		NotepadText,
+	} from "lucide-svelte";
 
 	let items = [
 		{
 			img: dergi,
-			desc: "Dergi",
-			buttonIcon: Armchair,
+			desc: "LGS Hazırlık",
+			buttonIcon: GraduationCap,
 		},
 		{
 			img: erlik,
-			desc: "Erlik",
-			buttonIcon: Armchair,
+			desc: "Ortaokul Hazırlık",
+			buttonIcon: NotepadText,
 		},
 		{
 			img: events,
-			desc: "Etkinlikler",
-			buttonIcon: Armchair,
-		},
-		{
-			img: monthly,
-			desc: "Aylık Sayı",
-			buttonIcon: Armchair,
+			desc: "Öğrenicye Özel Mentörlük",
+			buttonIcon: CalendarHeart,
 		},
 	];
 
@@ -85,8 +84,10 @@
 	});
 </script>
 
-<div class="mx-auto w-full max-w-7xl text-center">
-	<div class="transition-all delay-300 duration-150 ease-in-out">
+<div class="mx-auto w-full max-w-5xl text-center" id="hizmetlerimiz">
+	<div
+		class="transition-all min-h-[15rem] sm:min-h-[35rem] delay-300 duration-150 ease-in-out"
+	>
 		<div bind:this={itemsRef} class="relative flex flex-col">
 			{#each items as item, index}
 				<div
@@ -108,34 +109,34 @@
 	</div>
 
 	<div
-		class="mx-auto mt-8 grid max-w-xs grid-cols-2 gap-4 sm:max-w-sm md:max-w-3xl md:grid-cols-4"
+		class="mx-auto mt-8 grid max-w-xs grid-cols-1 gap-8 sm:max-w-sm md:max-w-3xl md:grid-cols-3"
 	>
 		{#each items as item, index}
 			<button
-				class="group rounded p-2 focus:outline-none focus-visible:ring focus-visible:ring-indigo-300"
+				class="group rounded p-2 focus:outline-none focus-visible:ring focus-visible:ring-primary"
 				on:click={() => selectItem(index)}
 			>
 				<span
-					class="flex flex-col items-center text-center {active ===
+					class="flex flex-col gap-2.5 items-center text-center {active ===
 					index
 						? ''
 						: 'opacity-50 transition-opacity group-hover:opacity-100 group-focus:opacity-100'}"
 				>
 					<span
-						class="relative mb-2 flex h-9 w-9 items-center justify-center rounded-full bg-indigo-100"
+						class="relative flex h-9 w-9 items-center justify-center rounded-full bg-primary-soft"
 					>
 						<svelte:component this={item.buttonIcon} />
 					</span>
-					<span class="mb-2 block text-sm font-medium text-slate-900">
+					<span class="block text-sm font-medium">
 						{item.desc}
 					</span>
 					<span
-						class="relative block h-1 w-full rounded-full bg-slate-200"
+						class="relative block h-1 w-full rounded-full bg-pop"
 						role="progressbar"
 						aria-valuenow={active === index ? progress.current : 0}
 					>
 						<span
-							class="absolute inset-0 rounded-[inherit] bg-indigo-500"
+							class="absolute inset-0 rounded-[inherit] bg-primary"
 							style="width: {active === index
 								? progress.current + '%'
 								: '0%'}"

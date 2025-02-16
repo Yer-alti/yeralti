@@ -18,6 +18,7 @@
 		"@sveltejs/adapter-node": "^5.2.9",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^4.0.0",
+		"@types/nodemailer": "^6.4.17",
 		"autoprefixer": "^10.4.20",
 		"mdsvex": "^0.11.2",
 		"svelte": "^5.16.0",
@@ -32,6 +33,12 @@
 		"@tailwindcss/forms": "^0.5.9",
 		"@tailwindcss/typography": "^0.5.15",
 		"lucide-svelte": "^0.469.0",
-		"svelte-motion": "^0.12.2"
+		"nodemailer": "^6.10.0",
+		"sonner": "^1.7.4",
+		"svelte-french-toast": "^1.2.0",
+		"svelte-motion": "^0.12.2",
+		"svelte-sonner": "^0.3.28",
+		"sveltekit-superforms": "^2.23.1",
+		"zod": "^3.24.2"
 	}
 }
